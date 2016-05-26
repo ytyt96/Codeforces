@@ -19,22 +19,19 @@
 using namespace std;
 
 int main(){
-	int a, b, c;
-	cin >> a >> b >> c;
-
-	if (c == 0){
-		if (a == b)
-			cout << "YES\n";
-		else
-			cout << "NO\n";
-		return 0;
+	int n;
+	cin >> n;
+	vector<int> nums(n);
+	int small, large;
+	for (int i = 0; i < n; i++){
+		cin >> nums[i];
+		if (nums[i] == 1)
+			small = i;
+		if (nums[i] == n)
+			large = i;
 	}
-	else{
-		if ((b - a) % c == 0 && (b - a) / c >= 0)
-			cout << "YES\n";
-		else
-			cout << "NO\n";
-	}	
-	return 0;
 
+	cout << max(max(abs(0 - large), abs(0 - small)), max(abs(n - 1 - large), abs(n - 1 - small))) << "\n";
+
+	return 0;
 }
